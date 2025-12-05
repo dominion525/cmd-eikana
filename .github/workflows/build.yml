@@ -1,0 +1,15 @@
+name: Build
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+      - run: swift --version
+      - run: xcodebuild -project "⌘英かな.xcodeproj" -scheme "⌘英かな" -configuration Release -arch arm64 build
