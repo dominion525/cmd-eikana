@@ -28,6 +28,17 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "7472654A2EE2DEB600EA7BAD"
+               BuildableName = "cmd-eikanaTests.xctest"
+               BlueprintName = "cmd-eikanaTests"
+               ReferencedContainer = "container:&#x2318;&#x82f1;&#x304b;&#x306a;.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

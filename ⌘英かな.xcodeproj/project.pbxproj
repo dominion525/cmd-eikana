@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -29,6 +29,16 @@
 		62FE51611DC70C5B0037B8D1 /* ExclusionAppsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FE51601DC70C5B0037B8D1 /* ExclusionAppsController.swift */; };
 		62FE51631DC75ECE0037B8D1 /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FE51621DC75ECE0037B8D1 /* AppData.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		7472654F2EE2DEB600EA7BAD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6294280F1D387503001BD4E9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 629428161D387503001BD4E9;
+			remoteInfo = "⌘英かな";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		6289285F1D99021700313C05 /* CopyFiles */ = {
@@ -70,7 +80,12 @@
 		62D162E61D3B350B009C95B0 /* toggleLaunchAtStartup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = toggleLaunchAtStartup.swift; sourceTree = "<group>"; };
 		62FE51601DC70C5B0037B8D1 /* ExclusionAppsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExclusionAppsController.swift; sourceTree = "<group>"; };
 		62FE51621DC75ECE0037B8D1 /* AppData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppData.swift; sourceTree = "<group>"; };
+		7472654B2EE2DEB600EA7BAD /* cmd-eikanaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "cmd-eikanaTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		7472654C2EE2DEB600EA7BAD /* cmd-eikanaTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = "cmd-eikanaTests"; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		620E0B3D1D9F2F8F0067F88B /* Frameworks */ = {
@@ -81,6 +96,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		629428141D387503001BD4E9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		747265482EE2DEB600EA7BAD /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -116,6 +138,7 @@
 			children = (
 				629428191D387503001BD4E9 /* ⌘英かな */,
 				620E0B411D9F2F8F0067F88B /* cmd-eikana-helper */,
+				7472654C2EE2DEB600EA7BAD /* cmd-eikanaTests */,
 				629428181D387503001BD4E9 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -125,6 +148,7 @@
 			children = (
 				629428171D387503001BD4E9 /* ⌘英かな.app */,
 				620E0B401D9F2F8F0067F88B /* cmd-eikana-helper.app */,
+				7472654B2EE2DEB600EA7BAD /* cmd-eikanaTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -192,13 +216,36 @@
 			productReference = 629428171D387503001BD4E9 /* ⌘英かな.app */;
 			productType = "com.apple.product-type.application";
 		};
+		7472654A2EE2DEB600EA7BAD /* cmd-eikanaTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 747265532EE2DEB600EA7BAD /* Build configuration list for PBXNativeTarget "cmd-eikanaTests" */;
+			buildPhases = (
+				747265472EE2DEB600EA7BAD /* Sources */,
+				747265482EE2DEB600EA7BAD /* Frameworks */,
+				747265492EE2DEB600EA7BAD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				747265502EE2DEB600EA7BAD /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				7472654C2EE2DEB600EA7BAD /* cmd-eikanaTests */,
+			);
+			name = "cmd-eikanaTests";
+			packageProductDependencies = (
+			);
+			productName = "cmd-eikanaTests";
+			productReference = 7472654B2EE2DEB600EA7BAD /* cmd-eikanaTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		6294280F1D387503001BD4E9 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0800;
+				LastSwiftUpdateCheck = 2600;
 				LastUpgradeCheck = 1230;
 				ORGANIZATIONNAME = eikana;
 				TargetAttributes = {
@@ -214,6 +261,10 @@
 								enabled = 0;
 							};
 						};
+					};
+					7472654A2EE2DEB600EA7BAD = {
+						CreatedOnToolsVersion = 26.0.1;
+						TestTargetID = 629428161D387503001BD4E9;
 					};
 				};
 			};
@@ -233,6 +284,7 @@
 			targets = (
 				629428161D387503001BD4E9 /* ⌘英かな */,
 				620E0B3F1D9F2F8F0067F88B /* cmd-eikana-helper */,
+				7472654A2EE2DEB600EA7BAD /* cmd-eikanaTests */,
 			);
 		};
 /* End PBXProject section */
@@ -253,6 +305,13 @@
 			files = (
 				6294281F1D387503001BD4E9 /* Assets.xcassets in Resources */,
 				629428221D387503001BD4E9 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		747265492EE2DEB600EA7BAD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,7 +348,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		747265472EE2DEB600EA7BAD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		747265502EE2DEB600EA7BAD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 629428161D387503001BD4E9 /* ⌘英かな */;
+			targetProxy = 7472654F2EE2DEB600EA7BAD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		620E0B4A1D9F2F8F0067F88B /* MainMenu.xib */ = {
@@ -315,14 +389,17 @@
 		620E0B4F1D9F2F8F0067F88B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = arm64;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = "cmd-eikana-helper/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				ARCHS = arm64;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "io.github.dominion525.cmd-eikana-helper";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -332,14 +409,17 @@
 		620E0B501D9F2F8F0067F88B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = arm64;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = "cmd-eikana-helper/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				ARCHS = arm64;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "io.github.dominion525.cmd-eikana-helper";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -350,6 +430,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = arm64;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -395,7 +476,6 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				ARCHS = arm64;
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -410,6 +490,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = arm64;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -450,11 +531,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				ARCHS = arm64;
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
@@ -462,12 +543,15 @@
 		629428321D387503001BD4E9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = arm64;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = "cmd-eikana/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				ARCHS = arm64;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "io.github.dominion525.cmd-eikana";
 				PRODUCT_NAME = "⌘英かな";
@@ -478,16 +562,81 @@
 		629428331D387503001BD4E9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = arm64;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = "cmd-eikana/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				ARCHS = arm64;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "io.github.dominion525.cmd-eikana";
 				PRODUCT_NAME = "⌘英かな";
 				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		747265512EE2DEB600EA7BAD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.7;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "Dominion525.cmd-eikanaTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/⌘英かな.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/⌘英かな";
+			};
+			name = Debug;
+		};
+		747265522EE2DEB600EA7BAD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.7;
+				MARKETING_VERSION = 1.0;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "Dominion525.cmd-eikanaTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/⌘英かな.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/⌘英かな";
 			};
 			name = Release;
 		};
@@ -517,6 +666,15 @@
 			buildConfigurations = (
 				629428321D387503001BD4E9 /* Debug */,
 				629428331D387503001BD4E9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		747265532EE2DEB600EA7BAD /* Build configuration list for PBXNativeTarget "cmd-eikanaTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				747265512EE2DEB600EA7BAD /* Debug */,
+				747265522EE2DEB600EA7BAD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
