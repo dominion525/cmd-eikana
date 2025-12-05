@@ -322,8 +322,9 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = "cmd-eikana-helper/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				PRODUCT_BUNDLE_IDENTIFIER = "io.github.imasanari.cmd-eikana-helper";
+				ARCHS = arm64;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "io.github.dominion525.cmd-eikana-helper";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -338,8 +339,9 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = "cmd-eikana-helper/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				PRODUCT_BUNDLE_IDENTIFIER = "io.github.imasanari.cmd-eikana-helper";
+				ARCHS = arm64;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "io.github.dominion525.cmd-eikana-helper";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -393,7 +395,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				ARCHS = arm64;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				"OTHER_SWIFT_FLAGS[arch=*]" = "-D DEBUG";
@@ -447,7 +450,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				ARCHS = arm64;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -463,8 +467,9 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = "cmd-eikana/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				PRODUCT_BUNDLE_IDENTIFIER = "io.github.imasanari.cmd-eikana";
+				ARCHS = arm64;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "io.github.dominion525.cmd-eikana";
 				PRODUCT_NAME = "⌘英かな";
 				SWIFT_VERSION = 5.0;
 			};
@@ -478,8 +483,9 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = "cmd-eikana/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				PRODUCT_BUNDLE_IDENTIFIER = "io.github.imasanari.cmd-eikana";
+				ARCHS = arm64;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "io.github.dominion525.cmd-eikana";
 				PRODUCT_NAME = "⌘英かな";
 				SWIFT_VERSION = 5.0;
 			};

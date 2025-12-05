@@ -36,15 +36,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         
         // 「起動時にアップデートを確認」
-        let checkUpdateState = userDefaults.object(forKey: "checkUpdateAtlaunch")
-        
-        if checkUpdateState == nil {
-            userDefaults.set(1, forKey: "checkUpdateAtlaunch")
-            checkUpdate()
-        }
-        else if checkUpdateState as! Int == 1 {
-            checkUpdate()
-        }
+        // TODO: GitHub Releases API対応後に有効化 (Issue #2)
+        // let checkUpdateState = userDefaults.object(forKey: "checkUpdateAtlaunch")
+        //
+        // if checkUpdateState == nil {
+        //     userDefaults.set(1, forKey: "checkUpdateAtlaunch")
+        //     checkUpdate()
+        // }
+        // else if checkUpdateState as! Int == 1 {
+        //     checkUpdate()
+        // }
         
         // 除外アプリ設定
         if let exclusionAppsListData = userDefaults.object(forKey: "exclusionApps") as? [[AnyHashable: Any]] {
@@ -143,7 +144,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     @IBAction func open(_ sender: NSButton) {
-        if let checkURL = URL(string: "https://ei-kana.appspot.com") {
+        if let checkURL = URL(string: "https://github.com/dominion525/cmd-eikana") {
             if NSWorkspace.shared.open(checkURL) {
                 print("url successfully opened")
             }

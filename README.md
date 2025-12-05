@@ -1,45 +1,28 @@
-# Eikana (⌘英かな)
-This application switches alphanumeric / kana when pushing left and right command keys.
-It can also be used as a key remapping application that works even with macOS Sierra by fiddling with settings in the preferences window.
+# ⌘英かな (cmd-eikana) - Apple Silicon Fork
 
-## Download
-Download latest release at https://ei-kana.appspot.com
+This is a fork of [iMasanari/cmd-eikana](https://github.com/iMasanari/cmd-eikana) for Apple Silicon Macs.
 
-## How to use (at first launch)
-⌘ Open the .app. Since it is unsigned, please open it by right clicking and choosing "Open".
-The app will display a confirmation dialog for accessibility functions, click on "Open" System Preferences ". Please click on the key in the lower left to unlock and mark ⌘ (Eikana) app as checked.
+左右のコマンドキーを単体で押した時に英数/かなを切り替えるアプリです。
+設定をいじることでキーリマップアプリとしても利用できます。
 
-## How to Quit
-Open the "⌘" icon in the status bar at the top right and select "Quit".
+## Fork版について
 
-## How to uninstall
+このリポジトリは [iMasanari](https://github.com/iMasanari) 氏による [オリジナル版](https://github.com/iMasanari/cmd-eikana) のフォークです。
 
-⌘ Drag app to the trash
-Also, the configuration file is located at ~ / Library / Preferences / io.github.imasanari.cmd - eikana.plist. If you want to erase cleanly please also put this in the garbage can.
-
-## Tested for compatibility with
-- OS X El Capitan 10.11.5 (未確認)
-- Mac OS Sierra 10.12 (未確認)
-- macOS Big Sur 11.1 (Apple M1)
-
-## License
-MIT License
-
-
-# ⌘英かな
-
-左右のコマンドキーを単体で押した時に英数/かなを切り替えるようにするアプリです。  
-設定をいじることでmacOS Sierraでも動くキーリマップアプリとしても利用できます。  
+### オリジナル版との違い
+- Apple Silicon (arm64) 専用ビルド
+- 最小動作要件: macOS 12.0 (Monterey) 以降
+- Bundle ID: `io.github.dominion525.cmd-eikana`
 
 ## ダウンロード
-https://ei-kana.appspot.com/  
-ここからダウンロードしてください
+
+[GitHub Releases](https://github.com/dominion525/cmd-eikana/releases) からダウンロードしてください。
 
 ## 使い方（初回起動時）
 
-⌘英かな.appを起動させます。未署名ですので[右クリック操作](https://support.apple.com/ja-jp/HT202491)で開いてください。  
-アクセシビリティ機能へのアクセスの確認ダイアログが表示されるので「"システム環境設定"を開く」をクリックします。
-左下の鍵をクリックして解除し、⌘英かな.appにチェックを入れてください。
+⌘英かな.appを起動させます。未署名ですので[右クリック操作](https://support.apple.com/ja-jp/HT202491)で開いてください。
+アクセシビリティ機能へのアクセスの確認ダイアログが表示されるので「"システム設定"を開く」をクリックします。
+プライバシーとセキュリティ > アクセシビリティ で⌘英かな.appにチェックを入れてください。
 
 ## 終了方法
 
@@ -47,15 +30,26 @@ https://ei-kana.appspot.com/
 
 ## アンインストール方法
 
-⌘英かな.appをゴミ箱に入れてください。  
-また、設定ファイルが`~/Library/Preferences/io.github.imasanari.cmd-eikana.plist`にあります。
+⌘英かな.appをゴミ箱に入れてください。
+また、設定ファイルが`~/Library/Preferences/io.github.dominion525.cmd-eikana.plist`にあります。
 綺麗さっぱり消したいという場合はこちらもゴミ箱に入れてください。
 
-## 動作確認
+## 動作確認環境
 
-- OS X El Capitan 10.11.5 (未確認)
-- mac OS Sierra 10.12 (未確認)
-- macOS Big Sur 11.1 (Apple M1)
+- macOS 15.7 Sequoia (Apple Silicon)
+
+## ビルド方法
+
+```bash
+xcodebuild -project "⌘英かな.xcodeproj" -scheme "⌘英かな" \
+  -configuration Release -arch arm64 clean build
+```
+
+## Credits
+
+- Original Author: [iMasanari](https://github.com/iMasanari)
+- Fork Maintainer: [dominion525](https://github.com/dominion525)
 
 ## ライセンス
-MIT License
+
+MIT License - Copyright (c) 2016 iMasanari
