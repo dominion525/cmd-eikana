@@ -31,9 +31,8 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
         
         lunchAtStartup.state = NSControl.StateValue(rawValue: userDefaults.integer(forKey: "lunchAtStartup"))
 
-        // TODO: GitHub Releases API対応後に有効化 (Issue #2)
-        checkUpdateAtlaunch.isEnabled = false
-        updateButton.isEnabled = false
+        // GitHub Releases API対応済み
+        checkUpdateAtlaunch.state = NSControl.StateValue(rawValue: userDefaults.integer(forKey: "checkUpdateAtlaunch") == 0 ? 0 : 1)
     }
 
     override var representedObject: Any? {
