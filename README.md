@@ -1,5 +1,9 @@
 # ⌘英かな (cmd-eikana) - Apple Silicon Fork
 
+![Build](https://github.com/dominion525/cmd-eikana/actions/workflows/build.yml/badge.svg)
+![License](https://img.shields.io/github/license/dominion525/cmd-eikana)
+![Platform](https://img.shields.io/badge/platform-macOS%2012.0%2B-blue)
+
 This is a fork of [iMasanari/cmd-eikana](https://github.com/iMasanari/cmd-eikana) for Apple Silicon Macs.
 
 左右のコマンドキーを単体で押した時に英数/かなを切り替えるアプリです。
