@@ -8,9 +8,10 @@ on:
 
 jobs:
   build:
-    runs-on: macos-14
+    runs-on: macos-15
     steps:
       - uses: actions/checkout@v4
+      - run: xcode-select -p
       - run: swift --version
       - run: xcodebuild -project "⌘英かな.xcodeproj" -scheme "⌘英かな" -configuration Release -arch arm64 build
       - run: xcodebuild test -project "⌘英かな.xcodeproj" -scheme "⌘英かな" -destination 'platform=macOS'
