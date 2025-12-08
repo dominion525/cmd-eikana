@@ -86,11 +86,10 @@ func compareVersions(_ newVersion: String, _ currentVersion: String) -> Bool {
     let currentParts = currentVersion.split(separator: ".").compactMap { Int($0) }
 
     let maxLength = max(newParts.count, currentParts.count)
+    let paddedNew = newParts + Array(repeating: 0, count: maxLength - newParts.count)
+    let paddedCurrent = currentParts + Array(repeating: 0, count: maxLength - currentParts.count)
 
-    for i in 0..<maxLength {
-        let newPart = i < newParts.count ? newParts[i] : 0
-        let currentPart = i < currentParts.count ? currentParts[i] : 0
-
+    for (newPart, currentPart) in zip(paddedNew, paddedCurrent) {
         if newPart > currentPart {
             return true
         } else if newPart < currentPart {

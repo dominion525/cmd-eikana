@@ -19,19 +19,19 @@ class MappingMenu: NSPopUpButton {
             keyMappingList[row - 1] = keyMapping
         }
     }
-    func move(_ at: Int) {
-        var at = at
+    func move(_ targetIndex: Int) {
+        var index = targetIndex
         if let row = self.row {
             let keyMapping = keyMappingList[row]
 
-            if at < 0 {
-                at = 0
-            } else if at > keyMappingList.count - 1 {
-                at = keyMappingList.count - 1
+            if index < 0 {
+                index = 0
+            } else if index > keyMappingList.count - 1 {
+                index = keyMappingList.count - 1
             }
 
             keyMappingList.remove(at: row)
-            keyMappingList.insert(keyMapping, at: at)
+            keyMappingList.insert(keyMapping, at: index)
         }
     }
     func down() {

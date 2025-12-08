@@ -1,0 +1,8 @@
+# SwiftLint Configuration
+
+disabled_rules:
+  - force_cast  # UIコンポーネントのキャストは意図的に使用
+
+excluded:
+  - Pods
+  - DerivedData
