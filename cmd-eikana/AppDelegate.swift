@@ -143,7 +143,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     @IBAction func open(_ sender: NSButton) {
-        if let checkURL = URL(string: "https://github.com/dominion525/cmd-eikana") {
+        if let checkURL = URL(string: "https://eikana.dominion525.com/") {
             if NSWorkspace.shared.open(checkURL) {
                 print("url successfully opened")
             }
