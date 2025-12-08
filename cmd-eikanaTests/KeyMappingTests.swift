@@ -185,4 +185,100 @@ struct KeyMappingTests {
     #expect(original.enable == false)
     #expect(reference.enable == false)
   }
+
+  @Test func nestedReferenceTypeSemantics() {
+    // KeyboardShortcutも参照型なので、input/outputへの変更が共有される
+    let input = createShortcut(keyCode: 55)
+    let output = createShortcut(keyCode: 102)
+    let mapping = KeyMapping(input: input, output: output, enable: true)
+
+    // 元のinputを変更すると、mappingのinputも変わる
+    input.keyCode = 999
+
+    #expect(mapping.input.keyCode == 999)
+    #expect(input.keyCode == 999)
+  }
+
+  @Test func sameShortcutForInputAndOutput() {
+    // 同じインスタンスをinputとoutputに使った場合
+    let shortcut = createShortcut(keyCode: 55)
+    let mapping = KeyMapping(input: shortcut, output: shortcut, enable: true)
+
+    // 片方を変更すると両方変わる（同一参照）
+    mapping.input.keyCode = 100
+
+    #expect(mapping.input.keyCode == 100)
+    #expect(mapping.output.keyCode == 100)
+    #expect(shortcut.keyCode == 100)
+  }
+
+  @Test func equalityIsReferenceBasedNotValue() {
+    // NSObjectのデフォルト等価性は参照比較
+    let input1 = createShortcut(keyCode: 55)
+    let output1 = createShortcut(keyCode: 102)
+    let a = KeyMapping(input: input1, output: output1, enable: true)
+
+    let input2 = createShortcut(keyCode: 55)
+    let output2 = createShortcut(keyCode: 102)
+    let b = KeyMapping(input: input2, output: output2, enable: true)
+
+    // 同じ値でも異なるインスタンスはisEqualでfalse
+    #expect(a.isEqual(b) == false)
+    #expect(a !== b)
+
+    // 同一参照ならtrue
+    let c = a
+    #expect(a.isEqual(c) == true)
+    #expect(a === c)
+  }
+
+  // MARK: - Additional Type Mismatch Tests
+
+  @Test func initFromInputAsString() {
+    // inputが辞書ではなく文字列
+    let dictionary: [AnyHashable: Any] = [
+      "input": "not a dictionary",
+      "output": createShortcutDictionary(keyCode: 102),
+      "enable": true,
+    ]
+    let mapping = KeyMapping(dictionary: dictionary)
+
+    #expect(mapping == nil)
+  }
+
+  @Test func initFromOutputAsString() {
+    // outputが辞書ではなく文字列
+    let dictionary: [AnyHashable: Any] = [
+      "input": createShortcutDictionary(keyCode: 55),
+      "output": "not a dictionary",
+      "enable": true,
+    ]
+    let mapping = KeyMapping(dictionary: dictionary)
+
+    #expect(mapping == nil)
+  }
+
+  @Test func initFromEnableAsInt() {
+    // enableがBoolではなくInt（Swiftでは1はtrueにならない）
+    let dictionary: [AnyHashable: Any] = [
+      "input": createShortcutDictionary(keyCode: 55),
+      "output": createShortcutDictionary(keyCode: 102),
+      "enable": 1,
+    ]
+    let mapping = KeyMapping(dictionary: dictionary)
+
+    #expect(mapping == nil)
+  }
+
+  @Test func initFromEnableAsString() {
+    // enableが文字列
+    let dictionary: [AnyHashable: Any] = [
+      "input": createShortcutDictionary(keyCode: 55),
+      "output": createShortcutDictionary(keyCode: 102),
+      "enable": "true",
+    ]
+    let mapping = KeyMapping(dictionary: dictionary)
+
+    #expect(mapping == nil)
+  }
 }
