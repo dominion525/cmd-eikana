@@ -16,7 +16,7 @@ var exclusionAppsDict: [String: String] = [:]
 class KeyEvent: NSObject {
     var keyCode: CGKeyCode? = nil
     var isExclusionApp = false
-    let bundleId = Bundle.main.infoDictionary?["CFBundleIdentifier"] as! String
+    let bundleId = Bundle.main.bundleIdentifier ?? ""
     var hasConvertedEventLog: KeyMapping? = nil
 
     override init() {
@@ -54,8 +54,11 @@ class KeyEvent: NSObject {
     }
     
     @objc func setActiveApp(_ notification: NSNotification) {
-        let app = notification.userInfo!["NSWorkspaceApplicationKey"] as! NSRunningApplication
-        
+        guard let userInfo = notification.userInfo,
+              let app = userInfo[NSWorkspace.applicationUserInfoKey] as? NSRunningApplication else {
+            return
+        }
+
         if let name = app.localizedName, let id = app.bundleIdentifier {
             isExclusionApp = exclusionAppsDict[id] != nil
             

@@ -15,14 +15,14 @@ func checkUpdate(_ callback: ((_ isNewVer: Bool?) -> Void)? = nil) {
     request.setValue("application/vnd.github.v3+json", forHTTPHeaderField: "Accept")
 
     let handler = { (data: Data?, res: URLResponse?, error: Error?) -> Void in
-        let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as! String
+        let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "0.0.0"
         var newVersion = ""
         var description = ""
         var releaseUrl = "https://github.com/dominion525/cmd-eikana/releases"
 
         do {
-            if let data = data {
-                let json = try JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
+            if let data = data,
+               let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
 
                 // tag_name から "v" プレフィックスを除去してバージョン番号を取得
                 if let tagName = json["tag_name"] as? String {

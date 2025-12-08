@@ -40,7 +40,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             userDefaults.set(1, forKey: "checkUpdateAtlaunch")
             checkUpdate()
         }
-        else if checkUpdateState as! Int == 1 {
+        else if (checkUpdateState as? Int) == 1 {
             checkUpdate()
         }
         
@@ -104,8 +104,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         statusItem.button?.title = "⌘"
         statusItem.menu = menu
 
-        let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as! String
-        
+        let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "unknown"
+
         menu.addItem(withTitle: "About ⌘英かな \(version)", action: #selector(AppDelegate.open(_:)), keyEquivalent: "")
         menu.addItem(withTitle: "Preferences...", action: #selector(AppDelegate.openPreferencesSerector(_:)), keyEquivalent: "")
         menu.addItem(NSMenuItem.separator())
@@ -129,7 +129,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     // 保存されたUserDefaultを全削除する。
     func resetUserDefault() {
-        let appDomain:String = Bundle.main.bundleIdentifier!
+        guard let appDomain = Bundle.main.bundleIdentifier else { return }
         UserDefaults.standard.removePersistentDomain(forName: appDomain)
     }
     
