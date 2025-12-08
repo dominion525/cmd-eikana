@@ -9,93 +9,94 @@
 import Cocoa
 
 func checkUpdate(_ callback: ((_ isNewVer: Bool?) -> Void)? = nil) {
-    // GitHub Releases API
-    let url = URL(string: "https://api.github.com/repos/dominion525/cmd-eikana/releases/latest")!
-    var request = URLRequest(url: url)
-    request.setValue("application/vnd.github.v3+json", forHTTPHeaderField: "Accept")
+  // GitHub Releases API
+  let url = URL(string: "https://api.github.com/repos/dominion525/cmd-eikana/releases/latest")!
+  var request = URLRequest(url: url)
+  request.setValue("application/vnd.github.v3+json", forHTTPHeaderField: "Accept")
 
-    let handler = { (data: Data?, _: URLResponse?, error: Error?) in
-        let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "0.0.0"
-        var newVersion = ""
-        var description = ""
-        var releaseUrl = "https://github.com/dominion525/cmd-eikana/releases"
+  let handler = { (data: Data?, _: URLResponse?, error: Error?) in
+    let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "0.0.0"
+    var newVersion = ""
+    var description = ""
+    var releaseUrl = "https://github.com/dominion525/cmd-eikana/releases"
 
-        do {
-            if let data = data,
-               let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
+    do {
+      if let data = data,
+        let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+      {
 
-                // tag_name から "v" プレフィックスを除去してバージョン番号を取得
-                if let tagName = json["tag_name"] as? String {
-                    newVersion = tagName.hasPrefix("v") ? String(tagName.dropFirst()) : tagName
-                }
-
-                // リリース名を説明として使用
-                if let name = json["name"] as? String {
-                    description = name
-                }
-
-                // リリースページのURL
-                if let htmlUrl = json["html_url"] as? String {
-                    releaseUrl = htmlUrl
-                }
-            }
-        } catch let error as NSError {
-            print("JSON parse error: \(error.debugDescription)")
-            DispatchQueue.main.async {
-                callback?(nil)
-            }
-            return
+        // tag_name から "v" プレフィックスを除去してバージョン番号を取得
+        if let tagName = json["tag_name"] as? String {
+          newVersion = tagName.hasPrefix("v") ? String(tagName.dropFirst()) : tagName
         }
 
-        // バージョン比較
-        let isAbleUpdate: Bool? = (newVersion == "") ? nil : compareVersions(newVersion, version)
-
-        if isAbleUpdate == true {
-            DispatchQueue.main.async {
-                let alert = NSAlert()
-                alert.messageText = "⌘英かな ver.\(newVersion) が利用可能です"
-                alert.informativeText = description
-                alert.addButton(withTitle: "Download")
-                alert.addButton(withTitle: "Cancel")
-                let ret = alert.runModal()
-
-                if ret == NSApplication.ModalResponse.alertFirstButtonReturn {
-                    if let url = URL(string: releaseUrl) {
-                        NSWorkspace.shared.open(url)
-                    }
-                }
-            }
+        // リリース名を説明として使用
+        if let name = json["name"] as? String {
+          description = name
         }
 
-        if let callback = callback {
-            DispatchQueue.main.async {
-                callback(isAbleUpdate)
-            }
+        // リリースページのURL
+        if let htmlUrl = json["html_url"] as? String {
+          releaseUrl = htmlUrl
         }
+      }
+    } catch let error as NSError {
+      print("JSON parse error: \(error.debugDescription)")
+      DispatchQueue.main.async {
+        callback?(nil)
+      }
+      return
     }
 
-    let config = URLSessionConfiguration.default
-    let session = URLSession(configuration: config)
-    let task = session.dataTask(with: request, completionHandler: handler)
-    task.resume()
+    // バージョン比較
+    let isAbleUpdate: Bool? = (newVersion == "") ? nil : compareVersions(newVersion, version)
+
+    if isAbleUpdate == true {
+      DispatchQueue.main.async {
+        let alert = NSAlert()
+        alert.messageText = "⌘英かな ver.\(newVersion) が利用可能です"
+        alert.informativeText = description
+        alert.addButton(withTitle: "Download")
+        alert.addButton(withTitle: "Cancel")
+        let ret = alert.runModal()
+
+        if ret == NSApplication.ModalResponse.alertFirstButtonReturn {
+          if let url = URL(string: releaseUrl) {
+            NSWorkspace.shared.open(url)
+          }
+        }
+      }
+    }
+
+    if let callback = callback {
+      DispatchQueue.main.async {
+        callback(isAbleUpdate)
+      }
+    }
+  }
+
+  let config = URLSessionConfiguration.default
+  let session = URLSession(configuration: config)
+  let task = session.dataTask(with: request, completionHandler: handler)
+  task.resume()
 }
 
 // セマンティックバージョニングで比較 (new > current なら true)
 func compareVersions(_ newVersion: String, _ currentVersion: String) -> Bool {
-    let newParts = newVersion.split(separator: ".").compactMap { Int($0) }
-    let currentParts = currentVersion.split(separator: ".").compactMap { Int($0) }
+  let newParts = newVersion.split(separator: ".").compactMap { Int($0) }
+  let currentParts = currentVersion.split(separator: ".").compactMap { Int($0) }
 
-    let maxLength = max(newParts.count, currentParts.count)
-    let paddedNew = newParts + Array(repeating: 0, count: maxLength - newParts.count)
-    let paddedCurrent = currentParts + Array(repeating: 0, count: maxLength - currentParts.count)
+  let maxLength = max(newParts.count, currentParts.count)
+  let paddedNew = newParts + Array(repeating: 0, count: maxLength - newParts.count)
+  let paddedCurrent = currentParts + Array(repeating: 0, count: maxLength - currentParts.count)
 
-    for (newPart, currentPart) in zip(paddedNew, paddedCurrent) {
-        if newPart > currentPart {
-            return true
-        } else if newPart < currentPart {
-            return false
-        }
+  for (newPart, currentPart) in zip(paddedNew, paddedCurrent) {
+    if newPart > currentPart {
+      return true
+    } else if newPart < currentPart {
+      return false
     }
+  }
 
-    return false // 同じバージョン
+  return false  // 同じバージョン
 }
