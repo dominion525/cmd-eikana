@@ -1,5 +1,15 @@
 title: "⌘英かな - Apple Silicon版"
 description: 左右のコマンドキーで英数/かなを切り替えるmacOS用ユーティリティ
+url: "https://eikana.dominion525.com"
 theme: minima
 header_pages: []
-og_image: /ogp.png
+plugins:
+  - jekyll-seo-tag
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      image:
+        path: /ogp.png
+        alt: "⌘英かな - Apple Silicon版"
