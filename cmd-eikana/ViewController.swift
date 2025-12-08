@@ -22,13 +22,7 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
         
         let showIconState = userDefaults.object(forKey: "showIcon") as? Int ?? 1
         showIcon.state = NSControl.StateValue(rawValue: showIconState)
-        
-        if #available(OSX 10.12, *) {
-        } else {
-            showIcon.title += "（macOS Sierraのみ）"
-            showIcon.isEnabled = false
-        }
-        
+
         lunchAtStartup.state = NSControl.StateValue(rawValue: userDefaults.integer(forKey: "lunchAtStartup"))
 
         // GitHub Releases API対応済み
@@ -41,7 +35,6 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
         }
     }
 
-    @available(OSX 10.12, *)
     @IBAction func clickShowIcon(_ sender: AnyObject) {
         statusItem.isVisible = (showIcon.state == NSControl.StateValue.on)
         userDefaults.set(showIcon.state, forKey: "showIcon")
