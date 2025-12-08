@@ -78,13 +78,13 @@ class ShortcutsController: NSViewController, NSTableViewDataSource, NSTableViewD
         switch sender.selectedItem!.title {
         case "この項目を削除", "remove":
             sender.remove()
-            case "最上部に移動", "move to the top":
+        case "最上部に移動", "move to the top":
             sender.move(0)
-            case "1つ上に移動", "move one up":
+        case "1つ上に移動", "move one up":
             sender.move(sender.row! - 1)
-            case "1つ下に移動", "move one down":
+        case "1つ下に移動", "move one down":
             sender.move(sender.row! + 1)
-            case "最下部に移動", "move to bottom":
+        case "最下部に移動", "move to bottom":
             sender.move(keyMappingList.count - 1)
         default:
             break
