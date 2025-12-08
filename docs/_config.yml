@@ -5,4 +5,11 @@ theme: minima
 header_pages: []
 plugins:
   - jekyll-seo-tag
-og_image: /ogp.png
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      image:
+        path: /ogp.png
+        alt: "⌘英かな - Apple Silicon版"
