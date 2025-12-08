@@ -3,6 +3,7 @@
 //  cmd-eikanaTests
 //
 
+import Foundation
 import Testing
 
 @testable import _英かな
@@ -75,5 +76,71 @@ struct AppDataTests {
     #expect(restored != nil)
     #expect(restored?.name == original.name)
     #expect(restored?.id == original.id)
+  }
+
+  // MARK: - Edge Cases
+
+  @Test func initWithEmptyStrings() {
+    let appData = AppData(name: "", id: "")
+
+    #expect(appData.name == "")
+    #expect(appData.id == "")
+  }
+
+  @Test func initWithUnicodeCharacters() {
+    let appData = AppData(name: "⌘英かな", id: "com.example.テスト")
+
+    #expect(appData.name == "⌘英かな")
+    #expect(appData.id == "com.example.テスト")
+  }
+
+  @Test func initFromDictionaryWithExtraKeys() {
+    // 余分なキーは無視されるべき
+    let dictionary: [AnyHashable: Any] = [
+      "name": "Test",
+      "id": "com.test",
+      "extra": "ignored",
+      "another": 123,
+    ]
+    let appData = AppData(dictionary: dictionary)
+
+    #expect(appData != nil)
+    #expect(appData?.name == "Test")
+    #expect(appData?.id == "com.test")
+  }
+
+  @Test func initFromEmptyDictionary() {
+    let dictionary: [AnyHashable: Any] = [:]
+    let appData = AppData(dictionary: dictionary)
+
+    #expect(appData == nil)
+  }
+
+  // MARK: - Reference Type Behavior
+
+  @Test func referenceTypeSemantics() {
+    // AppDataはクラス（参照型）なので、変更が共有される
+    let original = AppData(name: "Original", id: "com.original")
+    let reference = original
+
+    reference.name = "Modified"
+
+    #expect(original.name == "Modified")
+    #expect(reference.name == "Modified")
+  }
+
+  @Test func equalityIsReferenceBasedNotValue() {
+    // NSObjectのデフォルト等価性は参照比較
+    let a = AppData(name: "Same", id: "com.same")
+    let b = AppData(name: "Same", id: "com.same")
+
+    // 同じ値でも異なるインスタンスはisEqualでfalse
+    #expect(a.isEqual(b) == false)
+    #expect(a !== b)
+
+    // 同一参照ならtrue
+    let c = a
+    #expect(a.isEqual(c) == true)
+    #expect(a === c)
   }
 }
