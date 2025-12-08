@@ -1,5 +1,6 @@
 ---
 layout: default
+title: ⌘英かな - Apple Silicon版
 ---
 
 <div style="display: flex; align-items: center; gap: 16px;">
