@@ -11,139 +11,138 @@ import Cocoa
 class KeyboardShortcut: NSObject {
     var keyCode: CGKeyCode
     var flags: CGEventFlags
-    
+
     init(_ event: CGEvent) {
         self.keyCode = CGKeyCode(event.getIntegerValueField(.keyboardEventKeycode))
         self.flags = event.flags
-        
+
         super.init()
     }
     override init() {
         self.keyCode = 0
         self.flags = CGEventFlags(rawValue: 0)
-        
+
         super.init()
     }
-    
+
     init(keyCode: CGKeyCode, flags: CGEventFlags = CGEventFlags()) {
         self.keyCode = keyCode
         self.flags = flags
-        
+
         super.init()
     }
     init?(dictionary: [AnyHashable: Any]) {
         if let keyCodeInt = dictionary["keyCode"] as? Int,
             let eventFlagsInt = dictionary["flags"] as? Int {
-            
+
             self.flags = CGEventFlags(rawValue: UInt64(eventFlagsInt))
             self.keyCode = CGKeyCode(keyCodeInt)
-            
+
             super.init()
         } else {
             self.keyCode = 0
             self.flags = CGEventFlags(rawValue: 0)
-            
+
             super.init()
             return nil
         }
     }
-    
+
     func toDictionary() -> [AnyHashable: Any] {
         return [
             "keyCode": Int(keyCode),
             "flags": Int(flags.rawValue)
         ]
     }
-    
+
     func toString() -> String {
         let key = keyCodeDictionary[keyCode]
-        
+
         if key == nil {
             return ""
         }
-        
+
         var flagString = ""
-        
+
         if isSecondaryFnDown() {
             flagString += "(fn)"
         }
-        
+
         if isCapslockDown() {
             flagString += "⇪"
         }
-        
+
         if isCommandDown() {
             flagString += "⌘"
         }
-        
+
         if isShiftDown() {
             flagString += "⇧"
         }
-        
+
         if isControlDown() {
             flagString += "⌃"
         }
-        
+
         if isAlternateDown() {
             flagString += "⌥"
         }
-        
+
         return flagString + key!
     }
-    
+
     func isCommandDown() -> Bool {
         return self.flags.rawValue & CGEventFlags.maskCommand.rawValue != 0 && keyCode != 54 && keyCode != 55
     }
-    
+
     func isShiftDown() -> Bool {
         return self.flags.rawValue & CGEventFlags.maskShift.rawValue != 0 && keyCode != 56 && keyCode != 60
     }
-    
+
     func isControlDown() -> Bool {
         return self.flags.rawValue & CGEventFlags.maskControl.rawValue != 0 && keyCode != 59 && keyCode != 62
     }
-    
+
     func isAlternateDown() -> Bool {
         return self.flags.rawValue & CGEventFlags.maskAlternate.rawValue != 0 && keyCode != 58 && keyCode != 61
     }
-    
+
     func isSecondaryFnDown() -> Bool {
         return self.flags.rawValue & CGEventFlags.maskSecondaryFn.rawValue != 0 && keyCode != 63
     }
-    
+
     func isCapslockDown() -> Bool {
         return self.flags.rawValue & CGEventFlags.maskAlphaShift.rawValue != 0 && keyCode != 57
     }
-    
-    func postEvent() -> Void {
+
+    func postEvent() {
         let loc = CGEventTapLocation.cghidEventTap
-        
+
         let keyDownEvent = CGEvent(keyboardEventSource: nil, virtualKey: keyCode, keyDown: true)!
         let keyUpEvent = CGEvent(keyboardEventSource: nil, virtualKey: keyCode, keyDown: false)!
-        
+
         keyDownEvent.flags = flags
         keyUpEvent.flags = CGEventFlags()
-        
+
         keyDownEvent.post(tap: loc)
         keyUpEvent.post(tap: loc)
     }
-    
+
     func isCover(_ shortcut: KeyboardShortcut) -> Bool {
         if shortcut.isCommandDown() && !self.isCommandDown() ||
             shortcut.isShiftDown() && !self.isShiftDown() ||
             shortcut.isControlDown() && !self.isControlDown() ||
             shortcut.isAlternateDown() && !self.isAlternateDown() ||
             shortcut.isSecondaryFnDown() && !self.isSecondaryFnDown() ||
-            shortcut.isCapslockDown() && !self.isCapslockDown()
-        {
+            shortcut.isCapslockDown() && !self.isCapslockDown() {
             return false
         }
-        
+
         return true
     }
 }
 
-let keyCodeDictionary: Dictionary<CGKeyCode, String> = [
+let keyCodeDictionary: [CGKeyCode: String] = [
     0: "A",
     1: "S",
     2: "D",
@@ -269,7 +268,7 @@ let keyCodeDictionary: Dictionary<CGKeyCode, String> = [
     144: "BRIGHTNESS_UP",
     145: "BRIGHTNESS_DOWN",
     160: "Expose_All",
-    
+
     // media key (bata)
     999: "Disable",
     1000 + UInt16(NX_KEYTYPE_SOUND_UP): "Sound_up",

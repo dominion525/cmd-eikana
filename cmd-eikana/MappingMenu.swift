@@ -9,12 +9,12 @@
 import Cocoa
 
 class MappingMenu: NSPopUpButton {
-    var row: Int? = nil
-    
+    var row: Int?
+
     func up() {
         if let row = self.row, row - 1 != -1 {
             let keyMapping = keyMappingList[row]
-            
+
             keyMappingList[row] = keyMappingList[row - 1]
             keyMappingList[row - 1] = keyMapping
         }
@@ -23,14 +23,13 @@ class MappingMenu: NSPopUpButton {
         var at = at
         if let row = self.row {
             let keyMapping = keyMappingList[row]
-            
+
             if at < 0 {
                 at = 0
-            }
-            else if at > keyMappingList.count - 1 {
+            } else if at > keyMappingList.count - 1 {
                 at = keyMappingList.count - 1
             }
-            
+
             keyMappingList.remove(at: row)
             keyMappingList.insert(keyMapping, at: at)
         }
@@ -38,7 +37,7 @@ class MappingMenu: NSPopUpButton {
     func down() {
         if let row = self.row, row + 1 != keyMappingList.count {
             let keyMapping = keyMappingList[row]
-            
+
             keyMappingList[row] = keyMappingList[row + 1]
             keyMappingList[row + 1] = keyMapping
         }

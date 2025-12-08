@@ -13,7 +13,7 @@ import ServiceManagement
 
 func setLaunchAtStartup(_ enabled: Bool) {
     let appBundleIdentifier = "io.github.imasanari.cmd-eikana-helper"
-    
+
     if SMLoginItemSetEnabled(appBundleIdentifier as CFString, enabled) {
         if enabled {
             print("Successfully add login item.")

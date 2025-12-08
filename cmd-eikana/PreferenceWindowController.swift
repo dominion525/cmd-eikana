@@ -12,12 +12,12 @@ class PreferenceWindowController: NSWindowController, NSWindowDelegate {
     static func getInstance() -> PreferenceWindowController {
         let storyboard = NSStoryboard(name: "Main", bundle: nil)
         let controller = storyboard.instantiateController(withIdentifier: "Preference") as! PreferenceWindowController
-        
+
         controller.window?.title = "⌘英かな"
-        
+
         return controller
     }
-    
+
     func showAndActivate(_ sender: AnyObject?) {
         self.showWindow(sender)
         self.window?.makeKeyAndOrderFront(sender)
