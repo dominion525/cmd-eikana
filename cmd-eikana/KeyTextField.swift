@@ -23,13 +23,7 @@ class KeyTextField: NSComboBox {
         }
         return became;
     }
-    //    override func resignFirstResponder() -> Bool {
-    //        let resigned = super.resignFirstResponder();
-    //        if (resigned) {
-    //        }
-    //        return resigned;
-    //    }
-    
+
     override func textDidEndEditing(_ obj: Notification) {
         super.textDidEndEditing(obj)
         

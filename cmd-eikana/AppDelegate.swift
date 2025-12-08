@@ -21,9 +21,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
         
-//         resetUserDefault() // デバッグ用
-        
-        ////////////////////////////
+////////////////////////////
         // 保存データの読み込み
         ////////////////////////////
         
@@ -101,18 +99,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         ////////////////////////////
         
         preferenceWindowController = PreferenceWindowController.getInstance()
-        // preferenceWindowController.showAndActivate(self)
-        
+
         let menu = NSMenu()
-        statusItem.title = "⌘"
-        statusItem.highlightMode = true
+        statusItem.button?.title = "⌘"
         statusItem.menu = menu
-        
-//        loginItem = menu.addItem(withTitle: "ログイン時に開く", action: #selector(AppDelegate.launch(_:)), keyEquivalent: "")
-//        loginItem.state = applicationIsInStartUpItems() ? 1 : 0
-//        
-//        menu.addItem(NSMenuItem.separator())
-        
+
         let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as! String
         
         menu.addItem(withTitle: "About ⌘英かな \(version)", action: #selector(AppDelegate.open(_:)), keyEquivalent: "")
@@ -158,11 +149,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBAction func launch(_ sender: NSButton) {
         if sender.state.rawValue == 0 {
             sender.state = NSControl.StateValue(rawValue: 1)
-//            addLaunchAtStartup()
         }
         else {
             sender.state = NSControl.StateValue(rawValue: 0)
-//            removeLaunchAtStartup()
         }
     }
     

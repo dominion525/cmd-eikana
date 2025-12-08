@@ -58,7 +58,6 @@ class ShortcutsController: NSViewController, NSTableViewDataSource, NSTableViewD
             if id.rawValue == "input" || id.rawValue == "output" {
                 let value = id.rawValue == "input" ? keyMappingList[row].input : keyMappingList[row].output
                 
-                // let textField = cell.textField!
                 let textField = cell.subviews[0] as! KeyTextField
                 
                 textField.stringValue = value.toString()

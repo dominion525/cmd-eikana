@@ -96,13 +96,6 @@ class KeyEvent: NSObject {
             CGEventType.keyDown.rawValue,
             CGEventType.keyUp.rawValue,
             CGEventType.flagsChanged.rawValue,
-//            CGEventType.leftMouseDown.rawValue,
-//            CGEventType.leftMouseUp.rawValue,
-//            CGEventType.rightMouseDown.rawValue,
-//            CGEventType.rightMouseUp.rawValue,
-//            CGEventType.otherMouseDown.rawValue,
-//            CGEventType.otherMouseUp.rawValue,
-//            CGEventType.scrollWheel.rawValue,
             UInt32(NX_SYSDEFINED) // Media key Event
         ]
         var eventMask: UInt32 = 0
@@ -172,8 +165,7 @@ class KeyEvent: NSObject {
     
     func keyDown(_ event: CGEvent) -> Unmanaged<CGEvent>? {
         #if DEBUG
-            // print("keyCode: \(KeyboardShortcut(event).keyCode)")
-             print(KeyboardShortcut(event).toString())
+            print(KeyboardShortcut(event).toString())
         #endif
         
         self.keyCode = nil
@@ -271,13 +263,6 @@ class KeyEvent: NSObject {
     }
     
     func mediaKeyUp(_ mediaKeyEvent: MediaKeyEvent) -> Unmanaged<CGEvent>? {
-        // if hasConvertedEvent(mediaKeyEvent.event, keyCode: CGKeyCode(1000 + mediaKeyEvent.keyCode)) {
-        //     if let event = getConvertedEvent(mediaKeyEvent.event, keyCode: CGKeyCode(1000 + Int(mediaKeyEvent.keyCode))) {
-                // event.post(tap: CGEventTapLocation.cghidEventTap)
-        //     }
-        //     return nil
-        // }
-        
         return Unmanaged.passUnretained(mediaKeyEvent.event)
     }
     
