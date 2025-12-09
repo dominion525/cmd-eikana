@@ -130,7 +130,7 @@ struct CheckUpdateTests {
   }
 
   @Test func parseInvalidJSON() {
-    let data = "not valid json".data(using: .utf8)!
+    let data = Data("not valid json".utf8)
     let result = parseReleaseJSON(data)
 
     #expect(result == nil)
