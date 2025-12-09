@@ -145,7 +145,9 @@ struct CheckUpdateTests {
 
   // MARK: - Integration Tests (Real API)
 
-  @Test func fetchRealGitHubAPI() async throws {
+  // CI環境ではネットワークアクセスが制限される可能性があるため、手動実行用とする
+  @Test(.disabled("CI環境ではネットワーク依存テストをスキップ"))
+  func fetchRealGitHubAPI() async throws {
     let url = URL(string: "https://api.github.com/repos/dominion525/cmd-eikana/releases/latest")!
     var request = URLRequest(url: url)
     request.setValue("application/vnd.github.v3+json", forHTTPHeaderField: "Accept")
