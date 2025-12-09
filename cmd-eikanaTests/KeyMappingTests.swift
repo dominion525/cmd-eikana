@@ -216,20 +216,20 @@ struct KeyMappingTests {
     // NSObjectのデフォルト等価性は参照比較
     let input1 = createShortcut(keyCode: 55)
     let output1 = createShortcut(keyCode: 102)
-    let a = KeyMapping(input: input1, output: output1, enable: true)
+    let first = KeyMapping(input: input1, output: output1, enable: true)
 
     let input2 = createShortcut(keyCode: 55)
     let output2 = createShortcut(keyCode: 102)
-    let b = KeyMapping(input: input2, output: output2, enable: true)
+    let second = KeyMapping(input: input2, output: output2, enable: true)
 
     // 同じ値でも異なるインスタンスはisEqualでfalse
-    #expect(a.isEqual(b) == false)
-    #expect(a !== b)
+    #expect(first.isEqual(second) == false)
+    #expect(first !== second)
 
     // 同一参照ならtrue
-    let c = a
-    #expect(a.isEqual(c) == true)
-    #expect(a === c)
+    let sameReference = first
+    #expect(first.isEqual(sameReference) == true)
+    #expect(first === sameReference)
   }
 
   // MARK: - Additional Type Mismatch Tests

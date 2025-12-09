@@ -131,16 +131,16 @@ struct AppDataTests {
 
   @Test func equalityIsReferenceBasedNotValue() {
     // NSObjectのデフォルト等価性は参照比較
-    let a = AppData(name: "Same", id: "com.same")
-    let b = AppData(name: "Same", id: "com.same")
+    let first = AppData(name: "Same", id: "com.same")
+    let second = AppData(name: "Same", id: "com.same")
 
     // 同じ値でも異なるインスタンスはisEqualでfalse
-    #expect(a.isEqual(b) == false)
-    #expect(a !== b)
+    #expect(first.isEqual(second) == false)
+    #expect(first !== second)
 
     // 同一参照ならtrue
-    let c = a
-    #expect(a.isEqual(c) == true)
-    #expect(a === c)
+    let sameReference = first
+    #expect(first.isEqual(sameReference) == true)
+    #expect(first === sameReference)
   }
 }

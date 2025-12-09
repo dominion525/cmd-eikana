@@ -23,6 +23,7 @@ struct CheckUpdateTests {
     if let htmlUrl = htmlUrl {
       dict["html_url"] = htmlUrl
     }
+    // swiftlint:disable:next force_try
     return try! JSONSerialization.data(withJSONObject: dict, options: [])
   }
 

@@ -275,37 +275,37 @@ struct KeyboardShortcutTests {
 
   @Test func isCoverExactMatch() {
     // 同一の修飾キーでtrue
-    let a = createShortcut(keyCode: 0, flags: maskCommand)
-    let b = createShortcut(keyCode: 0, flags: maskCommand)
-    #expect(a.isCover(b) == true)
+    let source = createShortcut(keyCode: 0, flags: maskCommand)
+    let target = createShortcut(keyCode: 0, flags: maskCommand)
+    #expect(source.isCover(target) == true)
   }
 
   @Test func isCoverSuperset() {
     // 自分がより多い修飾キーを持っている場合はtrue
-    let a = createShortcut(keyCode: 0, flags: maskCommand | maskShift)
-    let b = createShortcut(keyCode: 0, flags: maskCommand)
-    #expect(a.isCover(b) == true)
+    let source = createShortcut(keyCode: 0, flags: maskCommand | maskShift)
+    let target = createShortcut(keyCode: 0, flags: maskCommand)
+    #expect(source.isCover(target) == true)
   }
 
   @Test func isCoverSubset() {
     // 相手がより多い修飾キーを持っている場合はfalse
-    let a = createShortcut(keyCode: 0, flags: maskCommand)
-    let b = createShortcut(keyCode: 0, flags: maskCommand | maskShift)
-    #expect(a.isCover(b) == false)
+    let source = createShortcut(keyCode: 0, flags: maskCommand)
+    let target = createShortcut(keyCode: 0, flags: maskCommand | maskShift)
+    #expect(source.isCover(target) == false)
   }
 
   @Test func isCoverNoFlags() {
     // 両方フラグなしでtrue
-    let a = createShortcut(keyCode: 0, flags: 0)
-    let b = createShortcut(keyCode: 0, flags: 0)
-    #expect(a.isCover(b) == true)
+    let source = createShortcut(keyCode: 0, flags: 0)
+    let target = createShortcut(keyCode: 0, flags: 0)
+    #expect(source.isCover(target) == true)
   }
 
   @Test func isCoverMixedFlags() {
     // 異なるフラグの組み合わせでfalse
-    let a = createShortcut(keyCode: 0, flags: maskCommand)
-    let b = createShortcut(keyCode: 0, flags: maskShift)
-    #expect(a.isCover(b) == false)
+    let source = createShortcut(keyCode: 0, flags: maskCommand)
+    let target = createShortcut(keyCode: 0, flags: maskShift)
+    #expect(source.isCover(target) == false)
   }
 
   @Test func isCoverSelfModifierKey() {
@@ -332,17 +332,17 @@ struct KeyboardShortcutTests {
   }
 
   @Test func equalityIsReferenceBasedNotValue() {
-    let a = createShortcut(keyCode: 55, flags: maskCommand)
-    let b = createShortcut(keyCode: 55, flags: maskCommand)
+    let first = createShortcut(keyCode: 55, flags: maskCommand)
+    let second = createShortcut(keyCode: 55, flags: maskCommand)
 
     // 同じ値でも異なるインスタンスはisEqualでfalse
-    #expect(a.isEqual(b) == false)
-    #expect(a !== b)
+    #expect(first.isEqual(second) == false)
+    #expect(first !== second)
 
     // 同一参照ならtrue
-    let c = a
-    #expect(a.isEqual(c) == true)
-    #expect(a === c)
+    let sameReference = first
+    #expect(first.isEqual(sameReference) == true)
+    #expect(first === sameReference)
   }
 
   @Test func initFromDictionaryWithExtraKeys() {
