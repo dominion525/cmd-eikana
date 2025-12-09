@@ -64,12 +64,12 @@ struct KeyboardShortcutTests {
   }
 
   @Test func initFromValidDictionary() {
-    let dictionary = createDictionary(keyCode: 55, flags: 1048576)
+    let dictionary = createDictionary(keyCode: 55, flags: 1_048_576)
     let shortcut = KeyboardShortcut(dictionary: dictionary)
 
     #expect(shortcut != nil)
     #expect(shortcut?.keyCode == 55)
-    #expect(shortcut?.flags.rawValue == 1048576)
+    #expect(shortcut?.flags.rawValue == 1_048_576)
   }
 
   @Test func initFromMissingKeyCode() {
@@ -122,7 +122,8 @@ struct KeyboardShortcutTests {
 
   @Test func roundTripWithMaxValues() {
     // 大きなkeyCode値とフラグ値での往復
-    let original = createShortcut(keyCode: 999, flags: maskCommand | maskShift | maskControl | maskAlternate)
+    let original = createShortcut(
+      keyCode: 999, flags: maskCommand | maskShift | maskControl | maskAlternate)
     let dictionary = original.toDictionary()
     let restored = KeyboardShortcut(dictionary: dictionary)
 
@@ -381,7 +382,8 @@ struct KeyboardShortcutTests {
 
   @Test func toStringAllFlags() {
     // 全フラグ: (fn)⇪⌘⇧⌃⌥ の順
-    let allFlags = maskSecondaryFn | maskAlphaShift | maskCommand | maskShift | maskControl | maskAlternate
+    let allFlags =
+      maskSecondaryFn | maskAlphaShift | maskCommand | maskShift | maskControl | maskAlternate
     let shortcut = createShortcut(keyCode: 0, flags: allFlags)
     #expect(shortcut.toString() == "(fn)⇪⌘⇧⌃⌥A")
   }

@@ -126,7 +126,7 @@ struct KeyMappingTests {
   }
 
   @Test func roundTrip() {
-    let input = createShortcut(keyCode: 54, flags: 1048840)  // Command_R with flags
+    let input = createShortcut(keyCode: 54, flags: 1_048_840)  // Command_R with flags
     let output = createShortcut(keyCode: 104)  // かな
     let original = KeyMapping(input: input, output: output, enable: true)
 
