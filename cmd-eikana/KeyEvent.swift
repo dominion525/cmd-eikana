@@ -14,10 +14,10 @@ var exclusionAppsList: [AppData] = []
 var exclusionAppsDict: [String: String] = [:]
 
 class KeyEvent: NSObject {
-  var keyCode: CGKeyCode? = nil
+  var keyCode: CGKeyCode?
   var isExclusionApp = false
   let bundleId = Bundle.main.infoDictionary?["CFBundleIdentifier"] as! String
-  var hasConvertedEventLog: KeyMapping? = nil
+  var hasConvertedEventLog: KeyMapping?
 
   override init() {
     super.init()
@@ -99,7 +99,7 @@ class KeyEvent: NSObject {
       .scrollWheel,
     ]
 
-    NSEvent.addGlobalMonitorForEvents(matching: nsEventMaskList) { (event: NSEvent) -> Void in
+    NSEvent.addGlobalMonitorForEvents(matching: nsEventMaskList) { _ in
       self.keyCode = nil
     }
 
@@ -299,9 +299,9 @@ class KeyEvent: NSObject {
   }
 
   func mediaKeyUp(_ mediaKeyEvent: MediaKeyEvent) -> Unmanaged<CGEvent>? {
-    // if hasConvertedEvent(mediaKeyEvent.event, keyCode: CGKeyCode(1000 + mediaKeyEvent.keyCode)) {
-    //     if let event = getConvertedEvent(mediaKeyEvent.event, keyCode: CGKeyCode(1000 + Int(mediaKeyEvent.keyCode))) {
-    // event.post(tap: CGEventTapLocation.cghidEventTap)
+    // if hasConvertedEvent(..., keyCode: CGKeyCode(1000 + mediaKeyEvent.keyCode)) {
+    //     if let event = getConvertedEvent(..., keyCode: CGKeyCode(1000 + Int(...))) {
+    //         event.post(tap: CGEventTapLocation.cghidEventTap)
     //     }
     //     return nil
     // }
@@ -315,11 +315,9 @@ class KeyEvent: NSObject {
       ? KeyboardShortcut(keyCode: 0, flags: MediaKeyEvent(event)!.flags) : KeyboardShortcut(event)
 
     if let mappingList = shortcutList[keyCode ?? shortcht.keyCode] {
-      for mappings in mappingList {
-        if shortcht.isCover(mappings.input) {
-          hasConvertedEventLog = mappings
-          return true
-        }
+      for mappings in mappingList where shortcht.isCover(mappings.input) {
+        hasConvertedEventLog = mappings
+        return true
       }
     }
     hasConvertedEventLog = nil
@@ -358,10 +356,8 @@ class KeyEvent: NSObject {
 
         return getEvent(mappings)
       }
-      for mappings in mappingList {
-        if shortcht.isCover(mappings.input) {
-          return getEvent(mappings)
-        }
+      for mappings in mappingList where shortcht.isCover(mappings.input) {
+        return getEvent(mappings)
       }
     }
     return nil

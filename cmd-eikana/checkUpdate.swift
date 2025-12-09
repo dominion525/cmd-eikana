@@ -57,7 +57,7 @@ func checkUpdate(_ callback: ((_ isNewVer: Bool?) -> Void)? = nil) {
   var request = URLRequest(url: url)
   request.setValue("application/vnd.github.v3+json", forHTTPHeaderField: "Accept")
 
-  let handler = { (data: Data?, _: URLResponse?, error: Error?) in
+  let handler = { (data: Data?, _: URLResponse?, _: Error?) in
     let currentVersion =
       Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "0.0.0"
 
