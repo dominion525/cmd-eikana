@@ -8,6 +8,49 @@
 
 import Cocoa
 
+// MARK: - ReleaseInfo
+
+struct ReleaseInfo {
+  let version: String
+  let description: String
+  let releaseUrl: String
+}
+
+// MARK: - JSON Parsing
+
+func parseReleaseJSON(_ data: Data) -> ReleaseInfo? {
+  do {
+    guard let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+    else {
+      return nil
+    }
+
+    // tag_name から "v" プレフィックスを除去してバージョン番号を取得
+    var version = ""
+    if let tagName = json["tag_name"] as? String {
+      version = tagName.hasPrefix("v") ? String(tagName.dropFirst()) : tagName
+    }
+
+    // versionが空の場合はnil
+    if version.isEmpty {
+      return nil
+    }
+
+    // リリース名を説明として使用
+    let description = json["name"] as? String ?? ""
+
+    // リリースページのURL
+    let releaseUrl =
+      json["html_url"] as? String ?? "https://github.com/dominion525/cmd-eikana/releases"
+
+    return ReleaseInfo(version: version, description: description, releaseUrl: releaseUrl)
+  } catch {
+    return nil
+  }
+}
+
+// MARK: - Check Update
+
 func checkUpdate(_ callback: ((_ isNewVer: Bool?) -> Void)? = nil) {
   // GitHub Releases API
   let url = URL(string: "https://api.github.com/repos/dominion525/cmd-eikana/releases/latest")!
@@ -15,33 +58,11 @@ func checkUpdate(_ callback: ((_ isNewVer: Bool?) -> Void)? = nil) {
   request.setValue("application/vnd.github.v3+json", forHTTPHeaderField: "Accept")
 
   let handler = { (data: Data?, _: URLResponse?, error: Error?) in
-    let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "0.0.0"
-    var newVersion = ""
-    var description = ""
-    var releaseUrl = "https://github.com/dominion525/cmd-eikana/releases"
+    let currentVersion =
+      Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "0.0.0"
 
-    do {
-      if let data = data,
-        let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
-      {
-
-        // tag_name から "v" プレフィックスを除去してバージョン番号を取得
-        if let tagName = json["tag_name"] as? String {
-          newVersion = tagName.hasPrefix("v") ? String(tagName.dropFirst()) : tagName
-        }
-
-        // リリース名を説明として使用
-        if let name = json["name"] as? String {
-          description = name
-        }
-
-        // リリースページのURL
-        if let htmlUrl = json["html_url"] as? String {
-          releaseUrl = htmlUrl
-        }
-      }
-    } catch let error as NSError {
-      print("JSON parse error: \(error.debugDescription)")
+    // JSONパース
+    guard let data = data, let releaseInfo = parseReleaseJSON(data) else {
       DispatchQueue.main.async {
         callback?(nil)
       }
@@ -49,19 +70,19 @@ func checkUpdate(_ callback: ((_ isNewVer: Bool?) -> Void)? = nil) {
     }
 
     // バージョン比較
-    let isAbleUpdate: Bool? = (newVersion == "") ? nil : compareVersions(newVersion, version)
+    let isAbleUpdate: Bool? = compareVersions(releaseInfo.version, currentVersion)
 
     if isAbleUpdate == true {
       DispatchQueue.main.async {
         let alert = NSAlert()
-        alert.messageText = "⌘英かな ver.\(newVersion) が利用可能です"
-        alert.informativeText = description
+        alert.messageText = "⌘英かな ver.\(releaseInfo.version) が利用可能です"
+        alert.informativeText = releaseInfo.description
         alert.addButton(withTitle: "Download")
         alert.addButton(withTitle: "Cancel")
         let ret = alert.runModal()
 
         if ret == NSApplication.ModalResponse.alertFirstButtonReturn {
-          if let url = URL(string: releaseUrl) {
+          if let url = URL(string: releaseInfo.releaseUrl) {
             NSWorkspace.shared.open(url)
           }
         }
