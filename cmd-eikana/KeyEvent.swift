@@ -28,10 +28,18 @@ class KeyEvent: NSObject {
                                                             selector: #selector(KeyEvent.setActiveApp(_:)),
                                                             name: NSWorkspace.didActivateApplicationNotification,
                                                             object:nil)
-        
+
+        // Input Monitoring権限のチェック (macOS 10.15+)
+        if #available(macOS 10.15, *) {
+            if !CGPreflightListenEventAccess() {
+                CGRequestListenEventAccess()
+            }
+        }
+
+        // Accessibility権限のチェック
         let checkOptionPrompt = kAXTrustedCheckOptionPrompt.takeRetainedValue() as NSString
         let options: CFDictionary = [checkOptionPrompt: true] as NSDictionary
-        
+
         if !AXIsProcessTrustedWithOptions(options) {
             // アクセシビリティに設定されていない場合、設定されるまでループで待つ
             Timer.scheduledTimer(timeInterval: 1.0,
@@ -44,12 +52,19 @@ class KeyEvent: NSObject {
             self.watch()
         }
     }
-    
+
     @objc func watchAXIsProcess(_ timer: Timer) {
-        if AXIsProcessTrusted() {
-            timer.invalidate()
-            
-            self.watch()
+        // macOS 10.15+ではInput Monitoring権限も確認
+        if #available(macOS 10.15, *) {
+            if AXIsProcessTrusted() && CGPreflightListenEventAccess() {
+                timer.invalidate()
+                self.watch()
+            }
+        } else {
+            if AXIsProcessTrusted() {
+                timer.invalidate()
+                self.watch()
+            }
         }
     }
     
