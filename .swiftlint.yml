@@ -1,0 +1,11 @@
+# SwiftLint Configuration
+
+disabled_rules:
+  - force_cast  # UIコンポーネントのキャストは意図的に使用
+  - trailing_comma  # Apple公式スタイル(swift-format)に準拠
+  - opening_brace  # swift-formatに準拠
+  - closure_parameter_position  # swift-formatに準拠
+
+excluded:
+  - Pods
+  - DerivedData
