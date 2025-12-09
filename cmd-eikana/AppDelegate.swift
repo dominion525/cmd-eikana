@@ -11,7 +11,7 @@ import Cocoa
 var statusItem = NSStatusBar.system.statusItem(withLength: CGFloat(NSStatusItem.variableLength))
 var loginItem = NSMenuItem()
 
-@NSApplicationMain
+@main
 class AppDelegate: NSObject, NSApplicationDelegate {
 
   var windowController: NSWindowController?
