@@ -10,6 +10,10 @@ title: ⌘英かな - Apple Silicon版
 
 macOSで左右のコマンドキーを単体で押したときに英数/かなを切り替えるユーティリティです。USキーボードでもJISキーボードの「英数」「かな」キーと同様の操作感を実現できます。
 
+macOS Sequoia (15) / Tahoe (26) に対応しています。
+
+※ オリジナル版で発生していたTahoe (26) でメニューが反応しない・アプリが応答不能になる問題を修正しました。
+
 本アプリケーションは [iMasanari/cmd-eikana](https://github.com/iMasanari/cmd-eikana) をApple Silicon向けにフォークしたものです。オリジナル版の詳細な説明は[公式サイト](https://ei-kana.appspot.com/)をご覧ください。
 
 ---
@@ -18,7 +22,7 @@ macOSで左右のコマンドキーを単体で押したときに英数/かな�
 
 <div style="text-align: center; margin: 2em 0;">
   <a href="https://github.com/dominion525/cmd-eikana/releases/latest" style="display: inline-flex; align-items: center; background: #4a90d9; color: white; text-decoration: none; padding: 12px 24px; border-radius: 8px; font-size: 1.1em;">
-    Download ⌘英かな-v2.3.1
+    Download ⌘英かな-v2.4.0
     <span style="background: #666; color: white; padding: 4px 10px; border-radius: 4px; margin-left: 12px; font-size: 0.85em;">macOS 12.0+ / Apple Silicon</span>
   </a>
   <div style="margin-top: 1em;">
@@ -42,39 +46,55 @@ macOSで左右のコマンドキーを単体で押したときに英数/かな�
 
 ## 初回起動時の設定
 
-本アプリは未署名のため、macOSのGatekeeperによってブロックされます。以下の手順で開いてください。
+本アプリはApple公証済みのため、通常のアプリと同様に起動できます。ただし、キー入力を監視するため、以下の権限設定が必要です。
 
 ### 1. アプリを開く
 
-⌘英かな.appをダブルクリックすると、以下のダイアログが表示されます。
+⌘英かな.appをダブルクリックすると、「インターネットからダウンロードされたアプリケーションです」という警告が表示されます。「**開く**」をクリックしてください。
 
 <div style="text-align: center; margin: 1em 0;">
-  <img src="setup-00-blocked.png" alt="ブロックダイアログ" style="width: 50%;">
+  <img src="setup-01-download-warning.png" alt="ダウンロード警告ダイアログ" style="max-width: 400px;">
 </div>
 
-ここでは「**完了**」をクリックしてください。
+### 2. 入力監視の許可
 
-### 2. システム設定から許可する
+起動すると「キー操作の受信」の許可を求めるダイアログが表示されます。「**システム設定を開く**」をクリックしてください。
 
-システム設定を開き、「**プライバシーとセキュリティ**」を選択します。下にスクロールすると、「"⌘英かな"がブロックされました」というメッセージが表示されています。「**このまま開く**」ボタンをクリックしてください。
-
-<div style="display: flex; align-items: center; gap: 16px; margin: 1em 0;">
-  <img src="setup-01-privacy-security.png" alt="プライバシーとセキュリティ" style="width: 35%;">
-  <img src="setup-02-allow-app.png" alt="このまま開く" style="width: 65%;">
+<div style="text-align: center; margin: 1em 0;">
+  <img src="setup-02-input-monitoring-dialog.png" alt="入力監視ダイアログ" style="max-width: 500px;">
 </div>
 
-### 3. 確認と認証
+システム設定の「プライバシーとセキュリティ」→「入力監視」が開きます。⌘英かなのトグルをONにしてください。
 
-「⌘英かなを開きますか？」というダイアログが表示されます。「**このまま開く**」をクリックし、Touch IDまたはパスワードで認証してください。
-
-<div style="display: flex; align-items: center; gap: 16px; margin: 1em 0;">
-  <img src="setup-03-open-dialog.png" alt="開きますか？ダイアログ" style="width: 50%;">
-  <img src="setup-04-auth.png" alt="認証ダイアログ" style="width: 50%;">
+<div style="text-align: center; margin: 1em 0;">
+  <img src="setup-03-input-monitoring-settings.png" alt="入力監視設定" style="max-width: 600px;">
 </div>
 
-### 4. アクセシビリティの許可
+トグルをONにすると、再起動を求めるダイアログが表示されます。「**終了して再度開く**」をクリックしてください。
 
-アプリが起動すると、アクセシビリティの許可を求められます。システム設定の「プライバシーとセキュリティ」→「アクセシビリティ」で⌘英かなを許可してください。
+<div style="text-align: center; margin: 1em 0;">
+  <img src="setup-04-input-monitoring-restart.png" alt="再起動ダイアログ" style="max-width: 600px;">
+</div>
+
+アプリが自動的に再起動しますので、しばらくお待ちください。
+
+### 3. アクセシビリティの許可
+
+アプリが再起動すると、続いて「アクセシビリティ」の許可を求められます。システム設定の「プライバシーとセキュリティ」→「アクセシビリティ」で⌘英かなのトグルをONにしてください。
+
+<div style="text-align: center; margin: 1em 0;">
+  <img src="setup-05-accessibility-settings.png" alt="アクセシビリティ設定" style="max-width: 600px;">
+</div>
+
+### 4. アプリを再起動する
+
+アクセシビリティの許可後、メニューバーの「⌘」アイコンをクリックして「**Quit**」を選択し、⌘英かなを一度終了してください。
+
+<div style="text-align: center; margin: 1em 0;">
+  <img src="setup-06-menubar.png" alt="メニューバー" style="max-width: 250px;">
+</div>
+
+その後、再度⌘英かな.appを起動すると、キーリマップが有効になります。
 
 ---
 
@@ -86,6 +106,16 @@ macOSで左右のコマンドキーを単体で押したときに英数/かな�
 2. システム設定 →「プライバシーとセキュリティ」→「アクセシビリティ」を開く
 3. 古い⌘英かなのエントリを削除（-ボタン）
 4. 本フォーク版を起動し、新しくアクセシビリティを許可
+
+### 上級者向け: ターミナルでの権限削除
+
+オリジナル版の権限設定をターミナルで削除することもできます。
+
+```bash
+tccutil reset All io.github.imasanari.cmd-eikana
+```
+
+その後、本フォーク版を起動して新しく権限を許可してください。
 
 ---
 
