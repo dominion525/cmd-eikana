@@ -48,7 +48,9 @@ macOSで左右のコマンドキーを単体で押したときに英数/かな�
 
 ⌘英かな.appをダブルクリックすると、以下のダイアログが表示されます。
 
-![ブロックダイアログ](setup-00-blocked.png){: width="50%"}
+<div style="text-align: center; margin: 1em 0;">
+  <img src="setup-00-blocked.png" alt="ブロックダイアログ" style="width: 50%;">
+</div>
 
 ここでは「**完了**」をクリックしてください。
 
@@ -56,24 +58,21 @@ macOSで左右のコマンドキーを単体で押したときに英数/かな�
 
 システム設定を開き、「**プライバシーとセキュリティ**」を選択します。下にスクロールすると、「"⌘英かな"がブロックされました」というメッセージが表示されています。「**このまま開く**」ボタンをクリックしてください。
 
-<div style="display: flex; gap: 16px; margin: 1em 0;">
-  <img src="setup-01-privacy-security.png" alt="プライバシーとセキュリティ" style="width: 50%;">
-  <img src="setup-02-allow-app.png" alt="このまま開く" style="width: 50%;">
+<div style="display: flex; align-items: center; gap: 16px; margin: 1em 0;">
+  <img src="setup-01-privacy-security.png" alt="プライバシーとセキュリティ" style="width: 35%;">
+  <img src="setup-02-allow-app.png" alt="このまま開く" style="width: 65%;">
 </div>
 
-### 3. 確認ダイアログ
+### 3. 確認と認証
 
-「⌘英かなを開きますか？」というダイアログが表示されます。「**このまま開く**」をクリックしてください。
+「⌘英かなを開きますか？」というダイアログが表示されます。「**このまま開く**」をクリックし、Touch IDまたはパスワードで認証してください。
 
-![開きますか？ダイアログ](setup-03-open-dialog.png){: width="50%"}
+<div style="display: flex; align-items: center; gap: 16px; margin: 1em 0;">
+  <img src="setup-03-open-dialog.png" alt="開きますか？ダイアログ" style="width: 50%;">
+  <img src="setup-04-auth.png" alt="認証ダイアログ" style="width: 50%;">
+</div>
 
-### 4. 認証
-
-Touch IDまたはパスワードで認証を求められます。認証してください。
-
-![認証ダイアログ](setup-04-auth.png){: width="50%"}
-
-### 5. アクセシビリティの許可
+### 4. アクセシビリティの許可
 
 アプリが起動すると、アクセシビリティの許可を求められます。システム設定の「プライバシーとセキュリティ」→「アクセシビリティ」で⌘英かなを許可してください。
 

@@ -6,6 +6,9 @@ header_pages: []
 plugins:
   - jekyll-seo-tag
 
+twitter:
+  card: summary_large_image
+
 defaults:
   - scope:
       path: ""
