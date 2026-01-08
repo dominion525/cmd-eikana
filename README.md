@@ -26,16 +26,7 @@ This is a fork of [iMasanari/cmd-eikana](https://github.com/iMasanari/cmd-eikana
 
 ### 1. アプリを開く
 
-本アプリは未署名のため、macOSのGatekeeperによってブロックされます。以下の手順で開いてください：
-
-1. ⌘英かな.appを**右クリック**（またはControl+クリック）
-2. メニューから「開く」を選択
-3. 警告ダイアログが表示されたら「開く」をクリック
-
-**右クリックでも開けない場合：**
-1. システム設定 →「プライバシーとセキュリティ」を開く
-2. 下にスクロールすると「"⌘英かな"は開発元を確認できないため...」のメッセージが表示されています
-3. 「このまま開く」ボタンをクリック
+[Releases](https://github.com/dominion525/cmd-eikana/releases) からダウンロードしたアプリは署名・公証済みのため、ダブルクリックで開けます。
 
 ### 2. アクセシビリティの許可
 
@@ -71,6 +62,8 @@ This is a fork of [iMasanari/cmd-eikana](https://github.com/iMasanari/cmd-eikana
 xcodebuild -project "⌘英かな.xcodeproj" -scheme "⌘英かな" \
   -configuration Release -arch arm64 clean build
 ```
+
+**注意:** ソースからビルドした場合は開発署名となるため、初回起動時にGatekeeperによってブロックされます。右クリック（またはControl+クリック）→「開く」で起動してください。
 
 ## Credits
 
