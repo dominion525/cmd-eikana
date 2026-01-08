@@ -19,7 +19,7 @@ func saveKeyMappings() {
 func keyMappingListToShortcutList() {
   shortcutList = [:]
 
-  for val in keyMappingList {
+  for val in keyMappingList where val.enable {
     let key = val.input.keyCode
 
     if shortcutList[key] == nil {
@@ -68,11 +68,24 @@ class ShortcutsController: NSViewController, NSTableViewDataSource, NSTableViewD
         button.target = self
         button.action = #selector(ShortcutsController.remove(_:))
       }
+      if id.rawValue == "enable" {
+        let button = cell.subviews[0] as! NSButton
+
+        button.state = keyMappingList[row].enable ? .on : .off
+        button.tag = row
+        button.target = self
+        button.action = #selector(ShortcutsController.toggleEnable(_:))
+      }
 
       return cell
     }
     return nil
   }
+  @objc func toggleEnable(_ sender: NSButton) {
+    keyMappingList[sender.tag].enable.toggle()
+    tableRreload()
+  }
+
   @objc func remove(_ sender: MappingMenu) {
     activeKeyTextField?.blur()
 
