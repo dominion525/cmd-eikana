@@ -22,7 +22,7 @@ macOS Sequoia (15) / Tahoe (26) に対応しています。
 
 <div style="text-align: center; margin: 2em 0;">
   <a href="https://github.com/dominion525/cmd-eikana/releases/latest" style="display: inline-flex; align-items: center; background: #4a90d9; color: white; text-decoration: none; padding: 12px 24px; border-radius: 8px; font-size: 1.1em;">
-    Download ⌘英かな-v2.4.1
+    Download ⌘英かな-v2.4.2
     <span style="background: #666; color: white; padding: 4px 10px; border-radius: 4px; margin-left: 12px; font-size: 0.85em;">macOS 12.0+ / Apple Silicon</span>
   </a>
   <div style="margin-top: 1em;">
