@@ -12,7 +12,7 @@ import Cocoa
 import ServiceManagement
 
 func setLaunchAtStartup(_ enabled: Bool) {
-  let appBundleIdentifier = "io.github.imasanari.cmd-eikana-helper"
+  let appBundleIdentifier = "io.github.dominion525.cmd-eikana-helper"
 
   if SMLoginItemSetEnabled(appBundleIdentifier as CFString, enabled) {
     if enabled {
