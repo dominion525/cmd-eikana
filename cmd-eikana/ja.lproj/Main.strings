@@ -359,8 +359,8 @@
 /* Class = "NSMenuItem"; title = "Paste"; ObjectID = "gVA-U4-sdL"; */
 "gVA-U4-sdL.title" = "Paste";
 
-/* Class = "NSMenuItem"; title = "menu"; ObjectID = "hM9-HT-fqx"; */
-"hM9-HT-fqx.title" = "menu";
+/* Class = "NSMenuItem"; title = "…"; ObjectID = "hM9-HT-fqx"; */
+"hM9-HT-fqx.title" = "…";
 
 /* Class = "NSMenuItem"; title = "Smart Quotes"; ObjectID = "hQb-2v-fYv"; */
 "hQb-2v-fYv.title" = "Smart Quotes";
