@@ -730,7 +730,7 @@
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                             <tableColumns>
-                                                <tableColumn width="20" minWidth="10" maxWidth="3.4028234663852886e+38" id="5Q2-ZP-bZo">
+                                                <tableColumn identifier="enable" width="20" minWidth="10" maxWidth="3.4028234663852886e+38" id="5Q2-ZP-bZo">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -749,7 +749,7 @@
                                                                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="auW-1h-yOd">
                                                                     <rect key="frame" x="-1" y="0.0" width="22" height="18"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                                    <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="only" enabled="NO" state="on" inset="2" id="t7J-gl-EMm">
+                                                                    <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="only" state="on" inset="2" id="t7J-gl-EMm">
                                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                                         <font key="font" metaFont="system"/>
                                                                     </buttonCell>
