@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ⌘英かな の Sparkle 更新フィード。リリースワークフローがリリースごとに <item> を 1 つ追加する。
+     item より上は手で保守する。 -->
+<rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle">
+  <channel>
+    <title>⌘英かな</title>
+    <link>https://eikana.dominion525.com/appcast.xml</link>
+    <description>⌘英かな の更新情報</description>
+    <language>ja</language>
+  </channel>
+</rss>
