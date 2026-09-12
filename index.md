@@ -22,7 +22,7 @@ macOS Sequoia (15) / Tahoe (26) に対応しています。
 
 <div style="text-align: center; margin: 2em 0;">
   <a href="https://github.com/dominion525/cmd-eikana/releases/latest" style="display: inline-flex; align-items: center; background: #4a90d9; color: white; text-decoration: none; padding: 12px 24px; border-radius: 8px; font-size: 1.1em;">
-    Download ⌘英かな-v2.4.2
+    Download ⌘英かな-v2.5.1
     <span style="background: #666; color: white; padding: 4px 10px; border-radius: 4px; margin-left: 12px; font-size: 0.85em;">macOS 12.0+ / Apple Silicon</span>
   </a>
   <div style="margin-top: 1em;">
@@ -118,6 +118,16 @@ tccutil reset All io.github.imasanari.cmd-eikana
 その後、本フォーク版を起動して新しく権限を許可してください。
 
 ---
+
+## アップデート
+
+アプリ内で新しいバージョンの確認・ダウンロード・適用を行います（[Sparkle](https://sparkle-project.org) を使用）。
+
+- 既定では自動的に確認し、新しいバージョンがあればダイアログで案内します
+- 自動確認は設定画面の「アップデートを自動的に確認」で切り替えられます
+- 設定画面の「確認する」ボタンでいつでも手動で確認できます
+
+v2.4.2 以前のバージョンにはこの仕組みが入っていないため、一度 [GitHub Releases](https://github.com/dominion525/cmd-eikana/releases) からダウンロードして入れ替えてください。以降はアプリ内でアップデートできます。
 
 ## 終了方法
 
