@@ -10,7 +10,7 @@ title: ⌘英かな - Apple Silicon版
 
 macOSで左右のコマンドキーを単体で押したときに英数/かなを切り替えるユーティリティです。USキーボードでもJISキーボードの「英数」「かな」キーと同様の操作感を実現できます。
 
-macOS Sequoia (15) / Tahoe (26) に対応しています。
+macOS 12 以上の Apple Silicon Mac で動作します。動作確認は macOS Sequoia (15) と Tahoe (26) で行っています。
 
 ※ オリジナル版で発生していたTahoe (26) でメニューが反応しない・アプリが応答不能になる問題を修正しました。
 
@@ -29,6 +29,12 @@ macOS Sequoia (15) / Tahoe (26) に対応しています。
     <a href="https://github.com/dominion525/cmd-eikana">View project on GitHub</a>
   </div>
 </div>
+
+Homebrew からも入れられます。
+
+```bash
+brew install --cask dominion525/tap/cmd-eikana
+```
 
 ---
 
@@ -88,13 +94,13 @@ macOS Sequoia (15) / Tahoe (26) に対応しています。
 
 ### 4. アプリを再起動する
 
-アクセシビリティの許可後、メニューバーの「⌘」アイコンをクリックして「**Quit**」を選択し、⌘英かなを一度終了してください。
+アクセシビリティの許可後、メニューバーの「⌘」アイコンをクリックして「**Restart**」を選択してください。
 
 <div style="text-align: center; margin: 1em 0;">
   <img src="setup-06-menubar.png" alt="メニューバー" style="max-width: 250px;">
 </div>
 
-その後、再度⌘英かな.appを起動すると、キーリマップが有効になります。
+⌘英かなが起動し直し、キーリマップが有効になります。
 
 ---
 
@@ -129,6 +135,8 @@ tccutil reset All io.github.imasanari.cmd-eikana
 
 v2.4.2 以前のバージョンにはこの仕組みが入っていないため、一度 [GitHub Releases](https://github.com/dominion525/cmd-eikana/releases) からダウンロードして入れ替えてください。以降はアプリ内でアップデートできます。
 
+Homebrew で入れた場合は `brew upgrade` でも新しいバージョンに上がります。アプリ内でアップデートした後に brew が古いバージョンへ戻すことはありません。
+
 ## 終了方法
 
 右上のステータスバーにある「⌘」アイコンをクリックし、「Quit」を選びます。
@@ -136,6 +144,12 @@ v2.4.2 以前のバージョンにはこの仕組みが入っていないため�
 ## アンインストール
 
 ⌘英かな.appをゴミ箱に入れてください。設定ファイル `~/Library/Preferences/io.github.dominion525.cmd-eikana.plist` も削除すると完全にアンインストールできます。
+
+Homebrew で入れた場合は次のコマンドで削除できます。`--zap` を付けると設定ファイルも削除します。
+
+```bash
+brew uninstall --cask cmd-eikana
+```
 
 ---
 
