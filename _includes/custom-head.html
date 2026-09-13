@@ -1,3 +1,36 @@
 <link rel="icon" type="image/png" href="{{ '/favicon.png' | relative_url }}">
 <script data-goatcounter="https://eikana.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
+<style>
+  .copy-wrap { position: relative; }
+  .copy-button {
+    position: absolute; top: 6px; right: 6px;
+    font-size: 12px; line-height: 1; padding: 5px 8px;
+    color: #555; background: #fff; border: 1px solid #ccc; border-radius: 4px;
+    cursor: pointer; opacity: 0.85;
+  }
+  .copy-button:hover { opacity: 1; }
+</style>
+<script>
+  // コードブロックの右上に「コピー」ボタンを付ける
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('pre').forEach(function (pre) {
+      var wrap = document.createElement('div');
+      wrap.className = 'copy-wrap';
+      pre.parentNode.insertBefore(wrap, pre);
+      wrap.appendChild(pre);
+
+      var button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'copy-button';
+      button.textContent = 'コピー';
+      button.addEventListener('click', function () {
+        navigator.clipboard.writeText(pre.textContent.replace(/\n$/, '')).then(function () {
+          button.textContent = 'コピーしました';
+          setTimeout(function () { button.textContent = 'コピー'; }, 1500);
+        });
+      });
+      wrap.appendChild(button);
+    });
+  });
+</script>
