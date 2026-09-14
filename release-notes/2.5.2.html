@@ -5,12 +5,22 @@
 <style>body{font:14px/1.6 -apple-system,system-ui,sans-serif;margin:1em;color:#1d1d1f}code,pre{font-family:ui-monospace,monospace;background:#f5f5f7;border-radius:4px}pre{padding:.75em;overflow-x:auto}code{padding:.1em .3em}h1,h2,h3{line-height:1.3}img{max-width:100%}@media(prefers-color-scheme:dark){body{background:#1d1d1f;color:#f5f5f7}code,pre{background:#2c2c2e}}</style>
 <h1>⌘英かな 2.5.2</h1>
 <p>2026 年 9 月 15 日公開</p>
-<h2>What's Changed</h2>
+<p>キー変換と設定まわりの不具合を修正しました。DMG での配布と Homebrew でのインストールにも対応しました。</p>
+<h2>変更点</h2>
 <ul>
-<li>feat: リリースに DMG を追加する by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/dominion525/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/dominion525">@dominion525</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5440453246" data-permission-text="Title is private" data-url="https://github.com/dominion525/cmd-eikana/issues/30" data-hovercard-type="pull_request" data-hovercard-url="/dominion525/cmd-eikana/pull/30/hovercard" href="https://github.com/dominion525/cmd-eikana/pull/30">dominion525/cmd-eikana#30</a></li>
-<li>feat: Homebrew の cask をリリースワークフローで更新する by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/dominion525/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/dominion525">@dominion525</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5440606730" data-permission-text="Title is private" data-url="https://github.com/dominion525/cmd-eikana/issues/31" data-hovercard-type="pull_request" data-hovercard-url="/dominion525/cmd-eikana/pull/31/hovercard" href="https://github.com/dominion525/cmd-eikana/pull/31">dominion525/cmd-eikana#31</a></li>
-<li>fix: キー変換と設定まわりの不具合を修正 by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/dominion525/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/dominion525">@dominion525</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5435161692" data-permission-text="Title is private" data-url="https://github.com/dominion525/cmd-eikana/issues/29" data-hovercard-type="pull_request" data-hovercard-url="/dominion525/cmd-eikana/pull/29/hovercard" href="https://github.com/dominion525/cmd-eikana/pull/29">dominion525/cmd-eikana#29</a></li>
-<li>test: ロジックを切り出し、画面操作まで含めたテストを追加する by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/dominion525/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/dominion525">@dominion525</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5441376628" data-permission-text="Title is private" data-url="https://github.com/dominion525/cmd-eikana/issues/32" data-hovercard-type="pull_request" data-hovercard-url="/dominion525/cmd-eikana/pull/32/hovercard" href="https://github.com/dominion525/cmd-eikana/pull/32">dominion525/cmd-eikana#32</a></li>
-<li>chore: バージョンを2.5.2に更新 by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/dominion525/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/dominion525">@dominion525</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5450475936" data-permission-text="Title is private" data-url="https://github.com/dominion525/cmd-eikana/issues/33" data-hovercard-type="pull_request" data-hovercard-url="/dominion525/cmd-eikana/pull/33/hovercard" href="https://github.com/dominion525/cmd-eikana/pull/33">dominion525/cmd-eikana#33</a></li>
+<li>修飾キーを押したまま別の操作をしたときに、修飾キーの単体押しとして英数/かなが切り替わることがある不具合を修正</li>
+<li>設定画面の出力欄にフォーカスがある間、メディアキー（音量・再生など）が効かなくなる不具合を修正</li>
+<li>「メニューバーにアイコンを表示」をオフにしても、次の起動時にアイコンが表示される不具合を修正</li>
+<li>除外アプリに設定したアプリが起動直後に最前面にあると、別のアプリに切り替えるまで除外が効かない不具合を修正</li>
+<li>保存された設定に想定外の値があると、起動時にアプリが落ちる可能性があった箇所を修正</li>
+<li>システム設定でショートカットが割り当てられていない入力ソース切り替えを選ぶと、空の設定が保存される不具合を修正</li>
+<li>その他、内部的な改善と安定性の向上</li>
 </ul>
-<p><strong>Full Changelog</strong>: <a class="commit-link" href="https://github.com/dominion525/cmd-eikana/compare/v2.5.1...v2.5.2">dominion525/cmd-eikana@<tt>v2.5.1...v2.5.2</tt></a></p>
+<h2>アップデート時の注意</h2>
+<p>v2.5.0 以降からはアプリ内の自動アップデートで更新できます。<br>
+v2.4.2 以前からは、一度 ZIP か DMG をダウンロードして入れ替えてください。</p>
+<h2>ダウンロード</h2>
+<p>⌘英かな.app を含む ZIP ファイルか DMG ファイルをダウンロードしてください。中身は同じアプリです。<br>
+Homebrew からも入れられます。</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">brew install --cask dominion525/tap/cmd-eikana</pre></div>
+<p>初回起動時の設定方法は独自サイトをご覧ください: <a href="https://eikana.dominion525.com/" rel="nofollow">https://eikana.dominion525.com/</a></p>
