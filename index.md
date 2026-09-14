@@ -22,13 +22,18 @@ macOS 12 以上の Apple Silicon Mac で動作します。動作確認は macOS 
 
 <div style="text-align: center; margin: 2em 0;">
   <a href="https://github.com/dominion525/cmd-eikana/releases/latest" style="display: inline-flex; align-items: center; background: #4a90d9; color: white; text-decoration: none; padding: 12px 24px; border-radius: 8px; font-size: 1.1em;">
-    Download ⌘英かな-v2.5.1
+    Download ⌘英かな-v2.5.2
     <span style="background: #666; color: white; padding: 4px 10px; border-radius: 4px; margin-left: 12px; font-size: 0.85em;">macOS 12.0+ / Apple Silicon</span>
   </a>
   <div style="margin-top: 1em;">
     <a href="https://github.com/dominion525/cmd-eikana">View project on GitHub</a>
   </div>
 </div>
+
+リリースページには DMG ファイル（`cmd-eikana-vX.Y.Z-arm64.dmg`）と ZIP ファイル（`cmd-eikana-vX.Y.Z-arm64.zip`）があります。中身は同じアプリなので、どちらか一方をダウンロードしてください。
+
+- **DMG ファイル**: ダブルクリックで開くと、⌘英かな.app と「Applications」フォルダが並んだウィンドウが表示されます。⌘英かな.app を「Applications」フォルダにドラッグしてください。コピーが終わったら、デスクトップやFinderのサイドバーにあるディスクイメージを取り出してください。
+- **ZIP ファイル**: ダブルクリックで展開し、出てきた ⌘英かな.app を「アプリケーション」フォルダに移動してください。
 
 Homebrew からも入れられます。
 
