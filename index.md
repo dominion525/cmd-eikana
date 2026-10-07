@@ -10,7 +10,9 @@ title: ⌘英かな - Apple Silicon版
 
 macOSで左右のコマンドキーを単体で押したときに英数/かなを切り替えるユーティリティです。USキーボードでもJISキーボードの「英数」「かな」キーと同様の操作感を実現できます。
 
-macOS 12 以上の Apple Silicon Mac で動作します。動作確認は macOS Sequoia (15) と Tahoe (26) で行っています。
+macOS 13 以上の Apple Silicon Mac で動作します。動作確認は macOS Sequoia (15) と Tahoe (26) で行っています。macOS 12 をお使いの場合は [v2.5.2](https://github.com/dominion525/cmd-eikana/releases/tag/v2.5.2) をお使いください。
+
+設定画面は日本語と英語のほか、中国語（繁体字・簡体字）・韓国語・タイ語・ドイツ語・フランス語でも表示されます。
 
 ※ オリジナル版で発生していたTahoe (26) でメニューが反応しない・アプリが応答不能になる問題を修正しました。
 
@@ -23,7 +25,7 @@ macOS 12 以上の Apple Silicon Mac で動作します。動作確認は macOS 
 <div style="text-align: center; margin: 2em 0;">
   <a href="https://github.com/dominion525/cmd-eikana/releases/latest" style="display: inline-flex; align-items: center; background: #4a90d9; color: white; text-decoration: none; padding: 12px 24px; border-radius: 8px; font-size: 1.1em;">
     Download ⌘英かな-v2.6.0
-    <span style="background: #666; color: white; padding: 4px 10px; border-radius: 4px; margin-left: 12px; font-size: 0.85em;">macOS 12.0+ / Apple Silicon</span>
+    <span style="background: #666; color: white; padding: 4px 10px; border-radius: 4px; margin-left: 12px; font-size: 0.85em;">macOS 13.0+ / Apple Silicon</span>
   </a>
   <div style="margin-top: 1em;">
     <a href="https://github.com/dominion525/cmd-eikana">View project on GitHub</a>
